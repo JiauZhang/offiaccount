@@ -2,11 +2,13 @@ import requests
 import json
 
 class BaseAPI:
-    def __init__(self, access_token=None):
+    def __init__(self, access_token=None, token_required=True):
+        if token_required and access_token is None:
+            raise RuntimeError('access_token is required, but access_token is None!')
         self.access_token = access_token
 
     def get(self, url=None, data={}):
-        if url is None or self.access_token is None:
+        if url is None:
             raise RuntimeError('BaseAPI.get parameter of url is None!')
 
         jdata = json.dumps(data)
@@ -14,7 +16,7 @@ class BaseAPI:
         return r.json()
 
     def post(self, url, data={}):
-        if url is None or self.access_token is None:
+        if url is None:
             raise RuntimeError('BaseAPI.post parameter of url is None!')
 
         jdata = json.dumps(data)

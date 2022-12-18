@@ -6,6 +6,7 @@ class Draft(BaseAPI):
         self.base_url = 'https://api.weixin.qq.com/cgi-bin/draft'
 
     def add(self, data):
+        # https://developers.weixin.qq.com/doc/offiaccount/Draft_Box/Add_draft.html
         add_url = self.base_url + '/add?access_token=' + self.access_token
         pass
 
