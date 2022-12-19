@@ -19,7 +19,7 @@ class BaseAPI:
         if url is None:
             raise RuntimeError('BaseAPI.post parameter of url is None!')
 
-        # https://developers.weixin.qq.com/community/develop/doc/000024b3058f40fa792e40b2656000?highLine=draft%2520html
+        # https://developers.weixin.qq.com/community/develop/doc/000024b3058f40fa792e40b2656000
         jdata = json.dumps(data, ensure_ascii=False)
         latin1 = jdata.encode("utf-8").decode('latin1')
         r = requests.post(url=url, data=latin1)
