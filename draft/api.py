@@ -8,7 +8,7 @@ class Draft(BaseAPI):
     def add(self, data):
         # https://developers.weixin.qq.com/doc/offiaccount/Draft_Box/Add_draft.html
         add_url = self.base_url + '/add?access_token=' + self.access_token
-        pass
+        return self.post(url=add_url, data=data)
 
     def get(self, media_id):
         get_url = self.base_url + '/get?access_token=' + self.access_token
@@ -22,7 +22,7 @@ class Draft(BaseAPI):
             'count': count,
             'no_content': no_content,
         }
-        self.post(url=batchget_url, data=data)
+        return self.post(url=batchget_url, data=data)
 
     def count(self):
         count_url = self.base_url + '/count?access_token=' + self.access_token

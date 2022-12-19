@@ -19,4 +19,7 @@ class Tokenizer(BaseAPI):
 
     def update(self):
         r = self.get(url=self.token_url)
-        self.access_token = r[self.json_key]
+        if self.json_key not in r:
+            print(f'get token failed!\n{r}')
+        else:
+            self.access_token = r[self.json_key]
